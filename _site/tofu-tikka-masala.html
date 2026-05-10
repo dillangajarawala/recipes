@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tofu Tikka Masala — Recipes</title>
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg:      #faf9f6;
+    --surface: #ffffff;
+    --text:    #2c2c2c;
+    --muted:   #96928a;
+    --accent:  #b5703a;
+    --border:  #e8e2d9;
+    --tag-bg:  #f5efe6;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 17px;
+}
+
+/* ── Header ── */
+
+.site-header {
+    background: #242420;
+    padding: 0.9rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header .site-name {
+    color: #f0e8dc;
+    font-size: 1rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+.site-header .back-link {
+    color: #a89f94;
+    font-size: 0.82rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.site-header .back-link:hover { color: #f0e8dc; }
+
+/* ── Container ── */
+
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+}
+
+/* ── Index page ── */
+
+.index-title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.3rem;
+}
+
+.index-count {
+    color: var(--muted);
+    font-size: 0.95rem;
+    margin-bottom: 2.75rem;
+}
+
+.recipe-list {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.recipe-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.4rem;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.12s;
+}
+
+.recipe-row:last-child { border-bottom: none; }
+.recipe-row:hover { background: #f5f0e8; }
+
+.recipe-row-name {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.recipe-row-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.recipe-row-yield {
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.recipe-row-arrow {
+    color: var(--accent);
+    font-size: 1.1rem;
+    opacity: 0.7;
+}
+
+/* ── Recipe page ── */
+
+.recipe-title {
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+}
+
+.recipe-yield {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 2.75rem;
+    font-style: italic;
+}
+
+.section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+}
+
+/* Ingredients */
+
+.ingredients-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.25rem 1.4rem;
+    margin-bottom: 2.75rem;
+}
+
+.ingredient-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+}
+
+.ingredient-row:last-child { border-bottom: none; }
+
+.ingredient-dot {
+    color: var(--accent);
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+}
+
+/* Instructions */
+
+.steps { margin-bottom: 2.75rem; }
+
+.step {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: 1.1rem;
+    margin-bottom: 1.75rem;
+    align-items: start;
+}
+
+.step-num {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #fff;
+    font-weight: 700;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+}
+
+.step-body { padding-top: 0.3rem; }
+
+.step-name {
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: #1a1a1a;
+}
+
+.step-bullets { list-style: none; }
+
+.step-bullets li {
+    position: relative;
+    padding: 0.25rem 0 0.25rem 1.1rem;
+    font-size: 0.97rem;
+    line-height: 1.6;
+    color: #3a3a3a;
+}
+
+.step-bullets li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+}
+
+/* Notes */
+
+.notes {
+    background: var(--tag-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1.1rem 1.4rem;
+    font-size: 0.93rem;
+    color: #5a5248;
+    font-style: italic;
+    line-height: 1.7;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 580px) {
+    body { font-size: 16px; }
+    .recipe-title { font-size: 2rem; }
+    .index-title  { font-size: 2rem; }
+    .container    { padding: 2rem 1rem 5rem; }
+    .site-header  { padding: 0.75rem 1rem; }
+}
+</style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="site-name" href="./">Recipes</a>
+        <a class="back-link" href="./">← All Recipes</a>
+    </header>
+    <main class="container">
+        <h1 class="recipe-title">Tofu Tikka Masala</h1>
+        <p class="recipe-yield">4 large servings</p>
+        <p class="section-label">Ingredients</p>
+        <div class="ingredients-card">
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1.5 tablespoon of avocado oil, separated into 3 parts</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 (14-ounce) package super-firm tofu, drained and pressed (you can use extra-firm, just be sure to press it for longer)</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 tablespoon cornstarch</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 tablespoon soy sauce</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 cup yogurt (I use nonfat greek)</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>3 tablespoons ginger-garlic paste</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>2 teaspoons ground cumin</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>2 teaspoons garam masala</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>2 teaspoons red chili powder</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 teaspoon ground turmeric</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>2 yellow onions, chopped</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 teaspoon paprika</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 teaspoon ground coriander</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 (28-ounce) can crushed tomatoes</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>2 cups water</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 red bell pepper, cut into half strips</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 green bell pepper, cut into half strips</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 red onion, cut into half slices</span>
+            </div>
+        </div>
+
+        <p class="section-label">Instructions</p>
+        <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+                <div class="step-name">Prepare Tofu (This should be done well in advance, maybe while prepping the other ingredients)</div>
+                <ul class="step-bullets">
+                    <li>Preheat the oven to 400F.</li>
+                    <li>Cut the pressed tofu into cubes, and transfer to a bowl</li>
+                    <li>Drizzle the tofu with 1/2 tablespoon oil and the soy sauce. (This will prevent the tofu from sticking to the baking sheet)</li>
+                    <li>Add the cornstarch to the tofu, toss to coat. (This will help crisp up the tofu)</li>
+                    <li>Spread the tofu out onto a parchment paper-lined baking sheet, and put in the oven for 30 minutes.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+                <div class="step-name">Prepare Tofu Marinade</div>
+                <ul class="step-bullets">
+                    <li>In a bowl, combine 1/2 cup yogurt, 1 tablespoon ginger-garlic paste, 1 teaspoon ground cumin, 1 teaspoon garam masala, 1 teaspoon red chili powder, and 1/2 teaspoon ground turmeric. If it’s a little thick, add a spoonful or two of water.</li>
+                    <li>Set aside for when the tofu comes out of the oven</li>
+                    <li>Once the tofu is out of the oven and has sat for 5-10 minutes (it’s cooled down), combine with the marinade.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+                <div class="step-name">Make the Tikka Masala Sauce</div>
+                <ul class="step-bullets">
+                    <li>In a large pot, heat 1/2 tablespoon of avocado oil</li>
+                    <li>Once it’s hot, add the chopped yellow onion. Sauté for 5-6 minutes, or until the onions are softer and translucent.</li>
+                    <li>Add 2 tablespoons of ginger-garlic paste and stir to combine.</li>
+                    <li>Add 1 teaspoon ground cumin, 1 teaspoon garam masala, 1 teaspoon red chili powder, and 1/2 teaspoon ground turmeric. Stir to combine</li>
+                    <li>Add the crushed tomatoes and water (I like to pour the water into the crushed tomatoes can to get all the bits)</li>
+                    <li>Bring the pot to a boil, and simmer it on low heat for 10 minutes.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+                <div class="step-name">Cook the Veggies and Tofu (while you’re starting the tikka masala sauce)</div>
+                <ul class="step-bullets">
+                    <li>In another pan, add the remaining avocado oil on medium heat</li>
+                    <li>Add the peppers and onions, and sauté for 5 minutes, or until the veggies have softened a little bit.</li>
+                    <li>Add the marinated tofu, and cook for 2 minutes</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+                <div class="step-name">Blend the Sauce and Combine Ingredients</div>
+                <ul class="step-bullets">
+                    <li>After the tikka masala sauce has simmered, use an immersion blender and blend the sauce together in the pot.</li>
+                    <li>Once the sauce is blended, add the cooked veggies and tofu and stir to combine</li>
+                    <li>Mix in the remaining 1/2 cup of yogurt well.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-body">
+                <div class="step-name">Serve</div>
+                <ul class="step-bullets">
+                    <li>Serve the tofu tikka masala with rice or bread of your choice (I like whole wheat pita for extra fiber)</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+        
+    </main>
+</body>
+</html>
