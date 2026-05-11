@@ -407,7 +407,7 @@ def render_index(recipes: list[dict]) -> str:
         <div class="hero">
             <h1 class="hero-title">Dillan's Recipes</h1>
             <p class="hero-blurb">You've found my recipe collection! Here's my small but mighty list of vegetarian recipes built around high protein and fiber. 
-            Each one makes at least 3 servings, so you can get away with only cooking a couple times a week and having your food last. I'm trying to get better about trying new things, 
+            Each one makes at least 3 servings, so you can get away with only cooking a couple times a week and having your food last. I'm trying to get better about testing out new things, 
             so when I find a recipe that works well, I'll post it here!</p>
         </div>
         <p class="index-count">{len(recipes)} recipes</p>
