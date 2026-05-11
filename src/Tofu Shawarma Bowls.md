@@ -2,7 +2,7 @@
   
 *Yield: 3 servings*  
 **Ingredients:**  
-* 14 oz super-firm tofu, pressed and cubed  
+* 14 oz super-firm tofu, pressed and cubed  (Sometimes I cut thin strips like actual shawarma) 
 * 1 tablespoon cornstarch  
 * 1 tablespoon soy sauce  
 * 1 tablespoon avocado oil  
