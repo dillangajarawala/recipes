@@ -16,7 +16,7 @@
 * ¼ cup chopped fresh cilantro (totally optional)  
 * Salt and Pepper  
 * Salsa for topping  
-**Preparation:**  
+**Instructions:**  
 1. **Prepare the Tofu:** Place the tofu on a plate lined with several layers of paper towels to absorb excess liquid. Using a fork or potato masher, crumble the tofu. (I prefer a fork and almost shred the tofu)  
 2. **Cook Vegetables:** Heat the avocado oil in a large skillet over medium-high heat. Add the chopped onion, bell peppers, and zucchini; cook, stirring occasionally, until softened, about 4-5 minutes.  
 3. **Add Spices:** Stir in the ground coriander and cumin; cook until fragrant, approximately 1 minute.  

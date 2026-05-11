@@ -32,4 +32,4 @@
 4. **Combine Ingredients:**  
     * Once the sauce is done simmering, add the pasta to the pan and the veggies from before. Stir to combine thoroughly. If it’s too thick, add some pasta water to thin it out.   
 5. **Serve:**  
-    * Serve the pasta water topped with extra red chili flakes and black pepper as well as grated parmesan.   
+    * Serve the pasta topped with extra red chili flakes and black pepper as well as grated parmesan.   

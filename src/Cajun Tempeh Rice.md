@@ -10,7 +10,8 @@
 * 1 red bell pepper, thinly sliced  
 * 4 cloves garlic, minced  
 * 3 cups cooked rice (preferably leftover, equal to 1 cup of dry rice)  
-* 1 (14.5-ounce) can diced tomatoes, blended into a puree  
+* 1 (14.5-ounce) can diced tomatoes, blended into a puree
+* 1 (15-ounce) can kidney beans, drained and rinsed  
 * Hot sauce, to taste (optional)  
 * Fresh parsley, chopped, for garnish (optional)  
 **Instructions:**  
@@ -19,7 +20,7 @@
     * Once hot, add the cubed tempeh and sprinkle with 1 teaspoon of Cajun seasoning. Stir to coat the tempeh evenly.  
     * Cook for about 5 minutes on each side until the tempeh is crispy. Remove from the skillet and set aside.  
 2. **Sauté the Vegetables:**  
-    * In the same skillet, add the remaining 1 tablespoon of avocado oil over medium heat.  
+    * In the same skillet, add the remaining 1/2 tablespoon of avocado oil over medium heat.  
     * Add the diced onion and cook for 5-7 minutes until the onion is lightly browned.  
     * Add the minced garlic; cook for an additional 1 minute until fragrant.  
     * Add the bell peppers and cook for an additional 5 minutes, until they are tender  
