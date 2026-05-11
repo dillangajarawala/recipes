@@ -3,18 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tempeh Stir Fry — Recipes</title>
+    <title>Tempeh Stir Fry — Dillan's Recipes</title>
     <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
 :root {
-    --bg:      #faf9f6;
-    --surface: #ffffff;
-    --text:    #2c2c2c;
-    --muted:   #96928a;
-    --accent:  #b5703a;
-    --border:  #e8e2d9;
-    --tag-bg:  #f5efe6;
+    --bg:      #121a11;
+    --surface: #1c2a1b;
+    --text:    #ece8d4;
+    --muted:   #7a9168;
+    --accent:  #c9a84c;
+    --border:  #243022;
+    --tag-bg:  #182217;
 }
 
 body {
@@ -28,7 +30,8 @@ body {
 /* ── Header ── */
 
 .site-header {
-    background: #242420;
+    background: #0d1410;
+    border-bottom: 1px solid var(--accent);
     padding: 0.9rem 2rem;
     display: flex;
     align-items: center;
@@ -36,15 +39,16 @@ body {
 }
 
 .site-header .site-name {
-    color: #f0e8dc;
-    font-size: 1rem;
+    color: var(--accent);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
     font-weight: 600;
     letter-spacing: 0.02em;
     text-decoration: none;
 }
 
 .site-header .back-link {
-    color: #a89f94;
+    color: var(--muted);
     font-size: 0.82rem;
     letter-spacing: 0.07em;
     text-transform: uppercase;
@@ -52,7 +56,7 @@ body {
     transition: color 0.15s;
 }
 
-.site-header .back-link:hover { color: #f0e8dc; }
+.site-header .back-link:hover { color: var(--accent); }
 
 /* ── Container ── */
 
@@ -62,25 +66,53 @@ body {
     padding: 3rem 1.5rem 6rem;
 }
 
-/* ── Index page ── */
+/* ── Index hero ── */
 
-.index-title {
-    font-size: 2.6rem;
+.hero {
+    text-align: center;
+    padding: 3rem 0 3.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.75rem;
+}
+
+.hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.2rem;
     font-weight: 700;
-    letter-spacing: -0.03em;
-    margin-bottom: 0.3rem;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.hero-blurb {
+    color: var(--muted);
+    font-size: 0.97rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
 }
 
 .index-count {
     color: var(--muted);
-    font-size: 0.95rem;
-    margin-bottom: 2.75rem;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
 }
 
 .recipe-list {
     border: 1px solid var(--border);
     border-radius: 10px;
-    overflow: hidden;
     background: var(--surface);
 }
 
@@ -92,11 +124,20 @@ body {
     text-decoration: none;
     color: var(--text);
     border-bottom: 1px solid var(--border);
-    transition: background 0.12s;
+    transition: background 0.15s, transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.2s;
+    position: relative;
+    z-index: 0;
 }
 
-.recipe-row:last-child { border-bottom: none; }
-.recipe-row:hover { background: #f5f0e8; }
+.recipe-row:first-child { border-radius: 10px 10px 0 0; }
+.recipe-row:last-child  { border-radius: 0 0 10px 10px; border-bottom: none; }
+
+.recipe-row:hover {
+    background: #1f2e1e;
+    transform: perspective(700px) translateY(-3px) rotateX(2deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(201,168,76,0.12);
+    z-index: 1;
+}
 
 .recipe-row-name {
     font-size: 1rem;
@@ -118,16 +159,17 @@ body {
 
 .recipe-row-arrow {
     color: var(--accent);
-    font-size: 1.1rem;
-    opacity: 0.7;
+    font-size: 1rem;
+    opacity: 0.8;
 }
 
 /* ── Recipe page ── */
 
 .recipe-title {
+    font-family: 'Playfair Display', Georgia, serif;
     font-size: 2.75rem;
     font-weight: 700;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.02em;
     line-height: 1.1;
     margin-bottom: 0.4rem;
 }
@@ -194,7 +236,7 @@ body {
     height: 2.4rem;
     border-radius: 50%;
     background: var(--accent);
-    color: #fff;
+    color: #0d1410;
     font-weight: 700;
     font-size: 0.88rem;
     display: flex;
@@ -207,10 +249,11 @@ body {
 .step-body { padding-top: 0.3rem; }
 
 .step-name {
+    font-family: 'Playfair Display', Georgia, serif;
     font-weight: 600;
     font-size: 1rem;
     margin-bottom: 0.5rem;
-    color: #1a1a1a;
+    color: var(--text);
 }
 
 .step-bullets { list-style: none; }
@@ -220,7 +263,8 @@ body {
     padding: 0.25rem 0 0.25rem 1.1rem;
     font-size: 0.97rem;
     line-height: 1.6;
-    color: #3a3a3a;
+    color: var(--text);
+    opacity: 0.85;
 }
 
 .step-bullets li::before {
@@ -238,7 +282,7 @@ body {
     border-radius: 0 8px 8px 0;
     padding: 1.1rem 1.4rem;
     font-size: 0.93rem;
-    color: #5a5248;
+    color: var(--muted);
     font-style: italic;
     line-height: 1.7;
 }
@@ -248,7 +292,7 @@ body {
 @media (max-width: 580px) {
     body { font-size: 16px; }
     .recipe-title { font-size: 2rem; }
-    .index-title  { font-size: 2rem; }
+    .hero-title   { font-size: 2.4rem; }
     .container    { padding: 2rem 1rem 5rem; }
     .site-header  { padding: 0.75rem 1rem; }
 }
@@ -256,7 +300,7 @@ body {
 </head>
 <body>
     <header class="site-header">
-        <a class="site-name" href="./">Recipes</a>
+        <a class="site-name" href="./">Dillan's Recipes</a>
         <a class="back-link" href="./">← All Recipes</a>
     </header>
     <main class="container">
