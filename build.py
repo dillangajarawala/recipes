@@ -121,6 +121,24 @@ body {
     margin-bottom: 1rem;
 }
 
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 3.5rem 0 0.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.section-note {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
 .recipe-list {
     border: 1px solid var(--border);
     border-radius: 10px;
@@ -377,7 +395,7 @@ def esc(s: str) -> str:
 
 # ── HTML renderers ─────────────────────────────────────────────────────────────
 
-def render_index(recipes: list[dict]) -> str:
+def render_rows(recipes: list[dict]) -> str:
     rows = ""
     for r in sorted(recipes, key=lambda x: x["title"]):
         href = f"{slugify(r['title'])}.html"
@@ -390,6 +408,22 @@ def render_index(recipes: list[dict]) -> str:
                 <span class="recipe-row-arrow">→</span>
             </span>
         </a>"""
+    return rows
+
+
+def render_index(recipes: list[dict]) -> str:
+    main = [r for r in recipes if r.get("category") != "indulgent"]
+    indulgent = [r for r in recipes if r.get("category") == "indulgent"]
+    rows = render_rows(main)
+
+    indulgent_html = ""
+    if indulgent:
+        indulgent_html = f"""
+        <h2 class="section-title">Indulgent Recipes</h2>
+        <p class="section-note">These ones aren't held to the high protein and fiber standard above. They're just really good.</p>
+        <p class="index-count">{len(indulgent)} recipe{"s" if len(indulgent) != 1 else ""}</p>
+        <nav class="recipe-list">{render_rows(indulgent)}
+        </nav>"""
 
     return f"""<!DOCTYPE html>
 <html lang="en">
@@ -410,9 +444,9 @@ def render_index(recipes: list[dict]) -> str:
             Each one makes at least 3 servings, so you can get away with only cooking a couple times a week and having your food last. I'm trying to get better about testing out new things, 
             so when I find a recipe that works well, I'll post it here!</p>
         </div>
-        <p class="index-count">{len(recipes)} recipes</p>
+        <p class="index-count">{len(main)} recipes</p>
         <nav class="recipe-list">{rows}
-        </nav>
+        </nav>{indulgent_html}
     </main>
 </body>
 </html>"""
@@ -482,12 +516,16 @@ def build():
         shutil.rmtree(OUT_DIR)
     OUT_DIR.mkdir()
 
+    sources = [(f, "main") for f in sorted(SRC_DIR.glob("*.md"))]
+    sources += [(f, "indulgent") for f in sorted((SRC_DIR / "indulgent").glob("*.md"))]
+
     recipes = []
-    for md_file in sorted(SRC_DIR.glob("*.md")):
+    for md_file, category in sources:
         r = parse_recipe(md_file)
         if not r["title"]:
             print(f"  Skipped (no title): {md_file.name}")
             continue
+        r["category"] = category
         recipes.append(r)
         out = OUT_DIR / f"{slugify(r['title'])}.html"
         out.write_text(render_recipe(r), encoding="utf-8")
