@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penne alla Vodka — Dillan's Recipes</title>
+    <style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+    --bg:      #121a11;
+    --surface: #1c2a1b;
+    --text:    #ece8d4;
+    --muted:   #7a9168;
+    --accent:  #c9a84c;
+    --border:  #243022;
+    --tag-bg:  #182217;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.65;
+    font-size: 17px;
+}
+
+/* ── Header ── */
+
+.site-header {
+    background: #0d1410;
+    border-bottom: 1px solid var(--accent);
+    padding: 0.9rem 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.site-header .site-name {
+    color: var(--accent);
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.05rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+}
+
+.site-header .back-link {
+    color: var(--muted);
+    font-size: 0.82rem;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color 0.15s;
+}
+
+.site-header .back-link:hover { color: var(--accent); }
+
+/* ── Container ── */
+
+.container {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 6rem;
+}
+
+/* ── Index hero ── */
+
+.hero {
+    text-align: center;
+    padding: 3rem 0 3.5rem;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 2.75rem;
+}
+
+.hero-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1rem;
+}
+
+.hero-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 3.2rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text);
+    margin-bottom: 1rem;
+}
+
+.hero-blurb {
+    color: var(--muted);
+    font-size: 0.97rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.7;
+}
+
+.index-count {
+    color: var(--muted);
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+}
+
+.section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--text);
+    margin: 3.5rem 0 0.5rem;
+    padding-top: 2.5rem;
+    border-top: 1px solid var(--border);
+}
+
+.section-note {
+    color: var(--muted);
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
+}
+
+.recipe-list {
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    background: var(--surface);
+}
+
+.recipe-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.1rem 1.4rem;
+    text-decoration: none;
+    color: var(--text);
+    border-bottom: 1px solid var(--border);
+    transition: background 0.15s, transform 0.2s cubic-bezier(0.2, 0, 0.2, 1), box-shadow 0.2s;
+    position: relative;
+    z-index: 0;
+}
+
+.recipe-row:first-child { border-radius: 10px 10px 0 0; }
+.recipe-row:last-child  { border-radius: 0 0 10px 10px; border-bottom: none; }
+
+.recipe-row:hover {
+    background: #1f2e1e;
+    transform: perspective(700px) translateY(-3px) rotateX(2deg);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.55), 0 2px 8px rgba(201,168,76,0.12);
+    z-index: 1;
+}
+
+.recipe-row-name {
+    font-size: 1rem;
+    font-weight: 500;
+}
+
+.recipe-row-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+    margin-left: 1rem;
+}
+
+.recipe-row-yield {
+    font-size: 0.82rem;
+    color: var(--muted);
+}
+
+.recipe-row-arrow {
+    color: var(--accent);
+    font-size: 1rem;
+    opacity: 0.8;
+}
+
+/* ── Recipe page ── */
+
+.recipe-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+}
+
+.recipe-yield {
+    color: var(--muted);
+    font-size: 0.9rem;
+    margin-bottom: 2.75rem;
+    font-style: italic;
+}
+
+.section-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.85rem;
+}
+
+/* Ingredients */
+
+.ingredients-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.25rem 1.4rem;
+    margin-bottom: 2.75rem;
+}
+
+.ingredient-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.7rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--border);
+    font-size: 1rem;
+}
+
+.ingredient-row:last-child { border-bottom: none; }
+
+.ingredient-dot {
+    color: var(--accent);
+    font-size: 1.3rem;
+    line-height: 1;
+    flex-shrink: 0;
+    margin-top: 0.05rem;
+}
+
+/* Instructions */
+
+.steps { margin-bottom: 2.75rem; }
+
+.step {
+    display: grid;
+    grid-template-columns: 2.4rem 1fr;
+    gap: 1.1rem;
+    margin-bottom: 1.75rem;
+    align-items: start;
+}
+
+.step-num {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    background: var(--accent);
+    color: #0d1410;
+    font-weight: 700;
+    font-size: 0.88rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+}
+
+.step-body { padding-top: 0.3rem; }
+
+.step-name {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--text);
+}
+
+.step-bullets { list-style: none; }
+
+.step-bullets li {
+    position: relative;
+    padding: 0.25rem 0 0.25rem 1.1rem;
+    font-size: 0.97rem;
+    line-height: 1.6;
+    color: var(--text);
+    opacity: 0.85;
+}
+
+.step-bullets li::before {
+    content: "–";
+    position: absolute;
+    left: 0;
+    color: var(--muted);
+}
+
+/* Notes */
+
+.notes {
+    background: var(--tag-bg);
+    border-left: 3px solid var(--accent);
+    border-radius: 0 8px 8px 0;
+    padding: 1.1rem 1.4rem;
+    font-size: 0.93rem;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.7;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 580px) {
+    body { font-size: 16px; }
+    .recipe-title { font-size: 2rem; }
+    .hero-title   { font-size: 2.4rem; }
+    .container    { padding: 2rem 1rem 5rem; }
+    .site-header  { padding: 0.75rem 1rem; }
+}
+</style>
+</head>
+<body>
+    <header class="site-header">
+        <a class="site-name" href="./">Dillan's Recipes</a>
+        <a class="back-link" href="./">← All Recipes</a>
+    </header>
+    <main class="container">
+        <h1 class="recipe-title">Penne alla Vodka</h1>
+        <p class="recipe-yield">4 servings</p>
+        <p class="section-label">Ingredients</p>
+        <div class="ingredients-card">
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>16 ounces penne</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>3 tablespoons olive oil</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 large shallot, finely diced</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>3 cloves garlic, finely chopped</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>A little under 1/2 cup vodka</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 (28-ounce) can crushed tomatoes</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>1 cup heavy cream</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>4 ounces grated Parmesan, plus more for topping</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>Salt and pepper</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>Crushed red pepper flakes</span>
+            </div>
+            <div class="ingredient-row">
+                <span class="ingredient-dot">·</span>
+                <span>Fresh basil for garnish</span>
+            </div>
+        </div>
+
+        <p class="section-label">Instructions</p>
+        <div class="steps">
+        <div class="step">
+            <div class="step-num">1</div>
+            <div class="step-body">
+                <div class="step-name">Boil the Water</div>
+                <ul class="step-bullets">
+                    <li>Bring a pot of salted water to a boil.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">2</div>
+            <div class="step-body">
+                <div class="step-name">Start the Sauce</div>
+                <ul class="step-bullets">
+                    <li>Heat the olive oil in a large saucepan over medium heat. Add the shallots and cook for 3-5 minutes.</li>
+                    <li>Add the garlic and cook for 30 seconds longer, until fragrant.</li>
+                    <li>Add the vodka, increase the heat to medium-high, and reduce by half, about 2-3 minutes.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">3</div>
+            <div class="step-body">
+                <div class="step-name">Simmer the Tomatoes</div>
+                <ul class="step-bullets">
+                    <li>Add the crushed tomatoes, bring to a boil, then reduce to a simmer. Simmer for about 10 minutes, while your pasta cooks.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">4</div>
+            <div class="step-body">
+                <div class="step-name">Cook the Pasta</div>
+                <ul class="step-bullets">
+                    <li>While the sauce simmers, add the pasta to the boiling water and cook until al dente.</li>
+                    <li>Drain, saving a little pasta water for later.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">5</div>
+            <div class="step-body">
+                <div class="step-name">Finish the Sauce</div>
+                <ul class="step-bullets">
+                    <li>Once the sauce has simmered, add the heavy cream, Parmesan, red pepper flakes, and salt and pepper to taste.</li>
+                    <li>Add the pasta, and a splash of pasta water if needed to thin the sauce a bit.</li>
+                </ul>
+            </div>
+        </div>
+        <div class="step">
+            <div class="step-num">6</div>
+            <div class="step-body">
+                <div class="step-name">Serve</div>
+                <ul class="step-bullets">
+                    <li>Top with basil, crushed red pepper flakes, and additional Parmesan if you want.</li>
+                </ul>
+            </div>
+        </div>
+        </div>
+
+        
+    </main>
+</body>
+</html>
